@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>start</title>
+</head>
+<body>
+<h3>gives the text in large letters for the message to be sent to the messenger</h3>
+<form>
+    <input type="search" value="{{ word }}" name="word">
+    <label>
+      Font :
+    <select name="font">
+        {% if font == 'one_line_mini' %}
+        <option value="one_line_mini" selected>One line mini</option>
+        {% else %}
+
+        <option value="one_line_mini">One line</option>
+        {% endif %}
+
+        {% if font == 'one_line' %}
+        <option value="one_line" selected>One line</option>
+        {% else %}
+
+        <option value="one_line">One line</option>
+        {% endif %}
+
+        {% if font == 'normal' %}
+        <option value="normal" selected>Normal</option>
+        {% else %}
+        <option value="normal">Normal</option>
+        {% endif %}
+
+        {% if font == "univers" %}
+        <option value="univers" selected>Univers</option>
+        {% else %}
+        <option value="univers">Univers</option>
+        {% endif %}
+
+    </select>
+    </label>
+    <input type="submit" value="Create">
+</form>
+<div class="content">
+    {% for line in text  %}
+    <p>{{ line }}</p>
+    {% endfor %}
+</div>
+<style>
+ p {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  text-align:center;
+ }
+ .content{
+ color: black;
+ background-color: rgb(245, 245, 242);
+ wight:10px;
+}
+    h3{
+      text-align:center;
+    }
+</style>
+</body>
+</html>
