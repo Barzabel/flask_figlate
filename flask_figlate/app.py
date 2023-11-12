@@ -8,7 +8,7 @@ font_type = {
     'one_line_mini': {'font': '3x5', 'width': 5},
     'one_line': {'font': '6x10', 'width': 10},
     'normal': {'font': 'com_sen_', 'width': 10},
-    'univers': {'font': 'univers', 'width': 14},
+    'univers': {'font': 'univers', 'width': 21},
 }
 
 
