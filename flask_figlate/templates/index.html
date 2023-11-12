@@ -5,7 +5,7 @@
     <title>start</title>
 </head>
 <body>
-<h3>Gives the text in large letters for the message to be sent to the messenger</h3>
+<h2>Gives the text in large letters for the message to be sent to the messenger</h2>
 <form>
     <input type="search" value="{{ word }}" name="word">
     <label>
@@ -41,28 +41,56 @@
     </label>
     <input type="submit" value="Create">
 </form>
-<div class="content">
-    {% for line in text  %}
-        <p>
-        {% for x in line %}
-            {{ x }}<br>
+<div>
+    <div class="vk">
+        <br>
+        <h3>for VK</h3>
+        <hr>
+        {% for line in text  %}
+            <ul>
+                {% for x in line %}
+                    <ol>{{ x }}</ol>
+                {% endfor %}
+            </ul>
         {% endfor %}
+    </div>
+    <div class="tg">
+        <br>
+        <h3>for Telegram</h3>
+        <hr>
+        {% for line in text  %}
+        <p>
+            {% for x in line %}
+                <p>{{ x }}</p>
+            {% endfor %}
         </p>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
 <style>
- p {
+ p, ul, ol {
   padding-top: 0;
   padding-bottom: 0;
   margin: 0;
   text-align:center;
  }
- .content{
+ .tg{
+ position: relative;
+ left: 51%;
+ top: 100%;
  color: black;
  background-color: rgb(245, 245, 242);
- wight:10px;
+ width: 49%;
+
 }
-    h3{
+ .vk{
+ position: absolute;
+ color: black;
+ background-color: rgb(245, 245, 242);
+  width: 50%;
+}
+
+    h2, h3{
       text-align:center;
     }
 </style>
