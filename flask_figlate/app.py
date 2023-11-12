@@ -8,24 +8,29 @@ font_type = {
     'one_line_mini': {'font': '3x5', 'width': 5},
     'one_line': {'font': '6x10', 'width': 10},
     'normal': {'font': 'com_sen_', 'width': 10},
-    'univers': {'font': 'univers', 'width': 15},
+    'univers': {'font': 'univers', 'width': 14},
 }
 
-space = {
-    'clear': b'\xe2\xa0\x80'.decode("utf-8"),
-    'line': '_'
-}
+
+class Render_text:
+    def __init__(self, render):
+        self.render = render
+        self.space = b'\xe2\xa0\x80'.decode("utf-8")
+
+    def render_text(self, word):
+        res = []
+        for x in word:
+            char = self.render.renderText(x).replace(' ', self.space).split('\n')
+            res.append(char)
+        return res
 
 
 @app.get('/')
 def index():
     word = request.args.get('word', '').lower()
     str_font = request.args.get('font', 'normal')
-    font = font_type[str_font ]
-    f = Figlet(**font)
-    text = f.renderText(word).split('\n')
-    new_text = []
-    s = space['clear']
-    for x in text:
-        new_text.append(x.replace(' ', s))
-    return render_template('index.html', text=new_text, word=word, font=str_font)
+    font = font_type[str_font]
+    render = Render_text(Figlet(**font))
+    text = render.render_text(word)
+
+    return render_template('index.html', text=text, word=word, font=str_font)
