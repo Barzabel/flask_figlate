@@ -43,9 +43,11 @@
 </form>
 <div class="content">
     {% for line in text  %}
+        <p>
         {% for x in line %}
-            <p>{{ x }}</p>
+            {{ x }}<br>
         {% endfor %}
+        </p>
     {% endfor %}
 </div>
 <style>
