@@ -17,10 +17,22 @@ class Render_text:
         self.render = render
         self.space = b'\xe2\xa0\x80'.decode("utf-8")
 
+    @staticmethod
+    def _strip_char(char):
+        res = []
+        for x, y in zip(char, char[1:]):
+            if len(set(x)) > 1 or len(set(y)) > 1:
+                res.append(x)
+        return res
+
     def render_text(self, word):
         res = []
         for x in word:
             char = self.render.renderText(x).replace(' ', self.space).split('\n')
+            if x != ' ':
+                char = self._strip_char(char)
+            else:
+                char = char[3:-3]
             res.append(char)
         return res
 
